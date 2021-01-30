@@ -13,11 +13,14 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml'] }
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'turbio/bracey.vim',{
+	\ 'do' : 'npm install --prefix server'}
 
 "Utilities
 Plug 'vimwiki/vimwiki'
@@ -39,8 +42,13 @@ nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 let NERDTreeQuitOnOpen = 1
 let NERDTreeIgnore = ['\~$'] 
 let NERDTreeMinimalUI = 1
+let NERDTreeWinSize = 10000
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+let g:prettier#print_width = 10000
+let g:prettier#config#html_whitespace_sensitivity = 'strict'
+let g:prettier#config#use_tabs= 'true'
+let g:prettier#config#tab_width= 2
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml Prettier
 
 "Utilities configuration
 set nocompatible
@@ -61,17 +69,19 @@ let &t_ut='' "Prevents terminal colorscheme to mess up Vim
 let mapleader = ' '
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
-nmap <Leader>qq :wq<CR>
+nmap <Leader>wq :wq<CR>
+nmap <Leader>s :sp<CR>
+nmap <Leader>vs :vs<CR>
 nmap <C-t> :tabnew<CR>
 nmap <C-w> :tabclose<CR>
 nmap <Leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <C-p> :Files<CR>
 autocmd FileType python map <buffer> <F6> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F6> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+map <F7> gg=G<C-o><C-o>
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-"VimWiki configurations
