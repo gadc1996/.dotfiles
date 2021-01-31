@@ -25,6 +25,7 @@ Plug 'turbio/bracey.vim',{
 "Utilities
 Plug 'vimwiki/vimwiki'
 Plug 'itchyny/calendar.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 call plug#end()
 
@@ -43,18 +44,21 @@ let NERDTreeQuitOnOpen = 1
 let NERDTreeIgnore = ['\~$'] 
 let NERDTreeMinimalUI = 1
 let NERDTreeWinSize = 10000
+let g:bracey_server_allow_remote_connections = 1
+let g:bracey_server_port = 8080
 let g:prettier#autoformat = 0
 let g:prettier#print_width = 10000
 let g:prettier#config#html_whitespace_sensitivity = 'strict'
 let g:prettier#config#use_tabs= 'true'
 let g:prettier#config#tab_width= 2
+let g:mkdp_auto_start = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml Prettier
 
 "Utilities configuration
 set nocompatible
 filetype plugin on
 
-"Configurations
+"Vim Configurations
 set tabstop=2 "Set tab length 
 set nowrap "Disable text wrapping
 set nobackup	"Disable backup files
@@ -64,6 +68,7 @@ set laststatus=2
 set shiftwidth=2 "Set tab length at newline"
 set number relativenumber "Display line numbers
 let &t_ut='' "Prevents terminal colorscheme to mess up Vim
+set belloff=all "Prevents anoying beeping
 
 " Mappings
 let mapleader = ' '
@@ -72,9 +77,12 @@ nmap <Leader>q :q<CR>
 nmap <Leader>wq :wq<CR>
 nmap <Leader>s :sp<CR>
 nmap <Leader>vs :vs<CR>
+nmap <Leader>ls :Bracey<CR>
 nmap <C-t> :tabnew<CR>
 nmap <C-w> :tabclose<CR>
 nmap <Leader>t :NERDTreeToggle<CR>
+nmap <Leader>md :MarkdownPreview<CR>
+nmap <Leader>mds :MarkdownPreviewStop<CR>
 nnoremap <silent> <C-p> :Files<CR>
 autocmd FileType python map <buffer> <F6> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F6> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
