@@ -56,7 +56,7 @@ let g:prettier#print_width = 10000
 let g:prettier#config#html_whitespace_sensitivity = 'strict'
 let g:prettier#config#use_tabs= 'true'
 let g:prettier#config#tab_width= 2
-let g:vimwiki_list = [{'path': '~/vimwiki'}, {'path': '~/Private'}]
+let g:vimwiki_list = [{'path': '~/vimwiki'}, {'path': '~/private'}]
 let g:mkdp_auto_start = 1
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml Prettier
 

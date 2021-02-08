@@ -1,3 +1,3 @@
-ln -s .dotfiles/.vimrc ~/.vimrc
-ln -s .dotfiles/.gitconfig ~/.gitconfig
-git clone https://github.com/gadc1996/vimwiki
+ln -s ~/.dotfiles/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.config
