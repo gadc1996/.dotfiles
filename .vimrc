@@ -24,6 +24,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'aliva/vim-fish'
 Plug 'turbio/bracey.vim',{
 	\ 'do' : 'npm install --prefix server'}
 
