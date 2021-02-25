@@ -68,9 +68,9 @@ filetype plugin on
 "Vim Configurations
 set tabstop=2 "Set tab length 
 set nowrap "Disable text wrapping
-set nobackup	"Disable backup files
-set noswapfile "Disable swap files
 set noshowmode "Hide default status bar 
+set backup "Turn on backup files
+set backupdir=~/tmp "Set tmp as the directory for backup files.
 set laststatus=2
 set shiftwidth=2 "Set tab length at newline"
 set number relativenumber "Display line numbers
